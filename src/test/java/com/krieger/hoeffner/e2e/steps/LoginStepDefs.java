@@ -56,4 +56,12 @@ public class LoginStepDefs {
         loginPage.clickAcceptCookieButton();
     }
 
+    @And("I can see forgot password link")
+    public void iCanSeeForgotPasswordLink() {
+        loginPage.waitForForgottenPasswordLink();
+    }
+
+    
+    //    When I click on a forgot password link
+    //    Then I am redirected to forgot password form
 }

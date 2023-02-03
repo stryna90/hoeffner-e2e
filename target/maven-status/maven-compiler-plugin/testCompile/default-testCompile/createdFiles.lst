@@ -1,0 +1,17 @@
+com\krieger\hoeffner\e2e\pages\RegisterPage.class
+com\krieger\hoeffner\e2e\steps\Hooks.class
+com\krieger\hoeffner\e2e\support\guice\WebDriverProvider.class
+com\krieger\hoeffner\e2e\support\services\InfrastructureService.class
+com\krieger\hoeffner\e2e\support\WebDriverSupport.class
+com\krieger\hoeffner\e2e\support\guice\TestInjectorSource.class
+com\krieger\hoeffner\e2e\steps\Hooks$Service.class
+com\krieger\hoeffner\e2e\support\services\KriegerWebAppService.class
+com\krieger\hoeffner\e2e\support\TestConfig.class
+com\krieger\hoeffner\e2e\pages\LoginPage.class
+com\krieger\hoeffner\e2e\support\guice\LogModule.class
+com\krieger\hoeffner\e2e\support\TestRunner.class
+com\krieger\hoeffner\e2e\support\guice\WebDriverModule.class
+com\krieger\hoeffner\e2e\support\hamcrest\RestAssuredMatchers.class
+com\krieger\hoeffner\e2e\support\services\InfrastructureService$UnhealthyException.class
+com\krieger\hoeffner\e2e\support\guice\ConfigModule.class
+com\krieger\hoeffner\e2e\steps\LoginStepDefs.class

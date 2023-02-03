@@ -5,9 +5,12 @@ import com.krieger.hoeffner.e2e.support.TestConfig;
 import com.krieger.hoeffner.e2e.support.WebDriverSupport;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.hc.core5.util.Timeout;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static java.time.Duration.ofSeconds;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
@@ -23,7 +26,9 @@ public class LoginPage {
     private final By byNewsletterInputField = By.id("email");
     private final By bySubmitButton = By.id("newsletterFormSubmitBtn");
     private final By byNewsletterConfirmationText = By.cssSelector(".footerNewsletter__confirmation");
-    private final By byAcceptCookieButton = By.xpath("//div[contains(text(),'Alle auswählen & bestätigen')]");
+    private final By byAcceptCookieButton = By.cssSelector(".consentForm__acceptButton");
+
+    private final By byForgottenPasswordLink = By.xpath("//a[@class='existingAccount__forgotten']");
 
     public void load() {
         support.getWebDriver().get(config.getUrl(LOGIN_PATH));
@@ -56,4 +61,11 @@ public class LoginPage {
         return support.getWebDriver().findElement(byNewsletterConfirmationText);
     }
 
+    public void clickForgottenPasswordLink() {
+        support.getWebDriver().findElement(byForgottenPasswordLink).click();
+    }
+
+    public void waitForForgottenPasswordLink() {
+        new WebDriverWait(support.getWebDriver(), 1).until(ExpectedConditions.elementToBeClickable(byForgottenPasswordLink));
+    }
 }

@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.krieger.hoeffner.e2e.support.TestRunner
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.716 sec
