@@ -24,8 +24,8 @@ public class ForgottenPasswordStepDefs {
         assertThat(forgottenPasswordPage.getCurrentUrl(), containsString(FORGOTTEN_PASSWORD_PATH));
     }
 
-    @And("I enter email for {string} in forgotten password form")
-    public void iEnterEmailForInForgottenPasswordForm(String userId) {
+    @And("I enter email for {string} in forgotten password input field")
+    public void iEnterEmailForInForgottenPasswordInputField(String userId) {
         forgottenPasswordPage.enterEmail(config.email(userId));
     }
 
