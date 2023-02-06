@@ -68,8 +68,4 @@ public class LoginStepDefs {
     @When("I click on a forgot password link")
     public void iClickOnAForgotPasswordLink() {
     }
-
-
-    //    When I click on a forgot password link
-    //    Then I am redirected to forgot password form
 }
