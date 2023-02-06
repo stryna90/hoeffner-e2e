@@ -5,7 +5,6 @@ import com.krieger.hoeffner.e2e.support.TestConfig;
 import com.krieger.hoeffner.e2e.support.WebDriverSupport;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.hc.core5.util.Timeout;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -62,10 +61,13 @@ public class LoginPage {
     }
 
     public void clickForgottenPasswordLink() {
-        support.getWebDriver().findElement(byForgottenPasswordLink).click();
+        WebElement forgottenPasswordLink = support.getWebDriver().findElement(byForgottenPasswordLink);
+        forgottenPasswordLink.click();
+        new WebDriverWait(support.getWebDriver(), 5).until(ExpectedConditions.invisibilityOf(forgottenPasswordLink));
     }
 
-    public void waitForForgottenPasswordLink() {
+    public WebElement getForgottenPasswordLink() {
         new WebDriverWait(support.getWebDriver(), 1).until(ExpectedConditions.elementToBeClickable(byForgottenPasswordLink));
+        return support.getWebDriver().findElement(byForgottenPasswordLink);
     }
 }

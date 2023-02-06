@@ -58,14 +58,11 @@ public class LoginStepDefs {
 
     @And("I can see forgot password link")
     public void iCanSeeForgotPasswordLink() {
-        loginPage.waitForForgottenPasswordLink();
+        assertThat(loginPage.getForgottenPasswordLink().isDisplayed(), equalTo(true));
     }
 
-    @Then("I am redirected to forgot password form")
-    public void iAmRedirectedToForgotPasswordForm() {
-    }
-
-    @When("I click on a forgot password link")
-    public void iClickOnAForgotPasswordLink() {
+    @When("I click on a forgotten password link")
+    public void iClickOnAForgottenPasswordLink() {
+        loginPage.clickForgottenPasswordLink();
     }
 }
