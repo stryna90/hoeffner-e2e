@@ -61,7 +61,15 @@ public class LoginStepDefs {
         loginPage.waitForForgottenPasswordLink();
     }
 
-    
+    @Then("I am redirected to forgot password form")
+    public void iAmRedirectedToForgotPasswordForm() {
+    }
+
+    @When("I click on a forgot password link")
+    public void iClickOnAForgotPasswordLink() {
+    }
+
+
     //    When I click on a forgot password link
     //    Then I am redirected to forgot password form
 }
