@@ -8,5 +8,5 @@ Feature: Forgotten password
     And I can see forgot password link
     When I click on a forgotten password link
     And I enter my email in forgotten password form
-    And I click on the Send button
+    And I click on the Send Email button
     Then I can see a confirmation that email with further instructions was sent

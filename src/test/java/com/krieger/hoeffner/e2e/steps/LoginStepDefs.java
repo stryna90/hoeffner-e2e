@@ -65,4 +65,6 @@ public class LoginStepDefs {
     public void iClickOnAForgottenPasswordLink() {
         loginPage.clickForgottenPasswordLink();
     }
+
+
 }
