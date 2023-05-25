@@ -26,14 +26,11 @@ public class LoginPage {
     private final By byNewsletterInputField = By.id("email");
     private final By bySubmitButton = By.id("newsletterFormSubmitBtn");
     private final By byNewsletterConfirmationText = By.cssSelector(".footerNewsletter__confirmation");
-
     private final By byForgottenPasswordLink = By.xpath("//a[@class='existingAccount__forgotten']");
 
     public void load() {
         support.getWebDriver().get(config.getUrl(LOGIN_PATH));
     }
-
-
 
     public WebElement getNewsletterInputField() {
         return support.getWebDriver().findElement(byNewsletterInputField);
