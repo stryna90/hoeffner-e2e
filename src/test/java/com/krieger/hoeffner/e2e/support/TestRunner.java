@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "com.krieger.hoeffner.e2e.steps",
-        plugin = { "de.monochromata.cucumber.report.PrettyReports:target/cucumber" },
+        plugin = { "de.monochromata.cucumber.report.PrettyReports:target/cucumber","io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm" },
         stepNotifications = true)
 public class TestRunner {
 }
