@@ -51,17 +51,12 @@ public class LoginStepDefs {
 
     }
 
-    @And("I accept cookies on the login page")
-    public void iAcceptCookiesOnTheLoginPage() {
-        loginPage.clickAcceptCookieButton();
-    }
-
     @And("I can see forgot password link")
     public void iCanSeeForgotPasswordLink() {
         loginPage.waitForForgottenPasswordLink();
     }
 
-    
+
     //    When I click on a forgot password link
     //    Then I am redirected to forgot password form
 }
