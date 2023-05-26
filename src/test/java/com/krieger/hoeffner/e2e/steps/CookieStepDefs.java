@@ -12,8 +12,8 @@ public class CookieStepDefs {
 
     private final CookiePage cookiePage;
 
-    @And("I accept cookies")
-    public void iAcceptCookies() {
+    @And("I accept the cookies")
+    public void iAcceptTheCookies() {
         cookiePage.clickAcceptCookieButton();
     }
 }
