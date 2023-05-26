@@ -17,14 +17,14 @@ public class HomePage {
     private final TestConfig config;
     private final WebDriverSupport support;
 
-    //XPath should be created dynamically depends on user name
-    private final By byLoginIcon = By.xpath("//span[contains(text(), 'FirstNameTest')]");
+    private final By byLoginButton = By.xpath("//a[@href ='/kundenkonto']/span");
 
     public void load() {
         support.getWebDriver().get(config.getUrl(HOME_PATH));
     }
 
-    public void waitForLoggedUser() {
-        new WebDriverWait(support.getWebDriver(), 5).until(ExpectedConditions.elementToBeClickable(support.getWebDriver().findElement(byLoginIcon)));
+    public void clickClientAccountButton(){
+        support.getWebDriver().findElement(byLoginButton).click();
     }
+
 }

@@ -29,7 +29,7 @@ public class RegisterStepDefs {
     public void iSubmitFormWithValidData() {
         registerPage.enterValidData();
         registerPage.submitRegistrationForm();
-        homePage.waitForLoggedUser();
+        homePage.clickClientAccountButton();
     }
 
     @When("I fill out the registration form")
