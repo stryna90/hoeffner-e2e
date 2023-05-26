@@ -16,6 +16,19 @@ import java.util.Random;
 public class RegisterPage {
     public static final String REGISTER_PATH = "/registrierung";
 
+    //Registration form error messages
+    public final String SALUTATION_ERR_MSG = "Bitte geben Sie eine Anrede ein";
+    public final String EMPTY_FIRST_NAME_ERR_MSG = "Bitte geben Sie Ihren Vornamen ein";
+    public final String EMPTY_LAST_NAME_ERR_MSG = "Bitte geben Sie Ihren Nachnamen ein";
+    public final String FIRST_LAST_NAME_ERR_MSG = "Bitte verwenden Sie nur die Zeichen a-z oder A-Z und nicht mehr als 30 Zeichen";
+    public final String EMPTY_EMAIL_ERR_MSG = "Bitte geben Sie Ihre E-Mail-Adresse ein";
+    public final String EMAIL_ERR_MSG = "Bitte geben Sie eine gültige E-Mail-Adresse ein";
+    public final String EXISTING_EMAIL_ERR_MSG = "Dieser Nutzer ist bereits vorhanden.";
+    public final String PASSWORD_ERR_MSG = "Bitte verwenden Sie ein Passwort von mindestes 8 Zeichen mit mindestens einem Kleinbuchstaben, einem Großbuchstaben, einer Zahl und einem Sonderzeichen.";
+    public final String PASSWORD2_ERR_MSG = "Die Passwörter stimmen nicht überein";
+    public final String EMPTY_PASSWORD2_ERR_MSG = "Bitte wiederholen Sie die Eingabe des Passworts";
+    public final String TERMS_CONDITION_ERR_MSG = "Bitte akzeptieren Sie die AGB und die Datenschutzbestimmungen";
+
     private final TestConfig config;
     private final WebDriverSupport support;
 
@@ -44,10 +57,8 @@ public class RegisterPage {
     private final By byFirstNameErrorMessage = By.id("firstName-error");
     private final By byLastNameErrorMessage = By.id("lastName-error");
     private final By byEmailErrorMessage = By.id("email-error");
-    private final By byExistingEmailErrorMessage = By.id(""); //TC
     private final By byPasswordErrorMessage = By.id("password-error");
     private final By byPassword2ErrorMessage = By.id("password2-error");
-    private final By byIncorrectPassword2ErrorMessage = By.id(""); //TC
     private final By byTermsAndConditionsErrorMessage = By.id("accountNew__agbBoxErrorId");
 
     public void load() {
@@ -69,6 +80,94 @@ public class RegisterPage {
         clickElement(byRegisterSubmitButton);
     }
 
+    public void enterDataFor(String value, String fieldName) {
+        switch (fieldName) {
+            case "first name":
+                sendKeysForElement(byFirstNameInput, value);
+                break;
+
+            case "last name":
+                sendKeysForElement(byLastNameInput, value);
+                break;
+
+            case "email":
+                sendKeysForElement(byEmailInput, value);
+                break;
+
+            case "password":
+                sendKeysForElement(byPasswordInput, value);
+                break;
+
+            case "repeat password":
+                sendKeysForElement(byPassword2Input, value);
+                break;
+
+            default:
+                System.out.println("Field name is incorrect");
+                break;
+        }
+    }
+
+    public String getErrorMessageFor(String errorField){
+        switch (errorField) {
+            case "salutation":
+                return getTextFromElement(bySalutationErrorMessage);
+
+            case "first name":
+                return getTextFromElement(byFirstNameErrorMessage);
+
+            case "last name":
+                return getTextFromElement(byLastNameErrorMessage);
+
+            case "email":
+                return getTextFromElement(byEmailErrorMessage);
+
+            case "password":
+                return getTextFromElement(byPasswordErrorMessage);
+
+            case "repeat password":
+                return getTextFromElement(byPassword2ErrorMessage);
+
+            case "terms and conditions":
+                return getTextFromElement(byTermsAndConditionsErrorMessage);
+
+            default:
+                return "Field name is incorrect";
+        }
+    }
+
+    public String getCorrectErrorMessageFor(String errorField){
+        switch (errorField) {
+            case "salutation":
+                return SALUTATION_ERR_MSG;
+
+            case "first name":
+
+            case "last name":
+                return FIRST_LAST_NAME_ERR_MSG;
+
+            case "email":
+                return EMAIL_ERR_MSG;
+
+            case "existing email":
+                return EXISTING_EMAIL_ERR_MSG;
+
+            case "password":
+                return PASSWORD_ERR_MSG;
+
+            case "repeat password":
+                return PASSWORD2_ERR_MSG;
+
+            case "terms and conditions":
+                return TERMS_CONDITION_ERR_MSG;
+
+            default:
+                return "Non existing error field name";
+        }
+    }
+
+
+
     //Pseudo random mail generator should be in utils or external library should be used
     //Emails can be random, because there is no email validation
     private String randomEmailGenerator() {
@@ -79,7 +178,7 @@ public class RegisterPage {
             int index = (int) (rnd.nextFloat() * chars.length());
             sb.append(chars.charAt(index));
         }
-        return "test+" + sb.toString() + "@hoeffner.com";
+        return "test+" + sb + "@hoeffner.com";
     }
 
     //This method should be extracted
@@ -93,6 +192,11 @@ public class RegisterPage {
     public void clickElement(By by) {
         WebElement element = support.getWebDriver().findElement(by);
         element.click();
+    }
+
+    public String getTextFromElement (By by) {
+        WebElement element = support.getWebDriver().findElement(by);
+        return element.getText();
     }
 
     //This method should be extracted
