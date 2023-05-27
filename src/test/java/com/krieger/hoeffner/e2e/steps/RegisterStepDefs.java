@@ -3,6 +3,7 @@ package com.krieger.hoeffner.e2e.steps;
 import com.google.inject.Inject;
 import com.krieger.hoeffner.e2e.pages.HomePage;
 import com.krieger.hoeffner.e2e.pages.RegisterPage;
+import com.krieger.hoeffner.e2e.support.TestConfig;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -19,6 +20,7 @@ public class RegisterStepDefs {
 
     private final RegisterPage registerPage;
     private final HomePage homePage;
+    private final TestConfig config;
 
     @Given("I load the registration page")
     public void iLoadTheRegistrationPage() {
@@ -47,4 +49,28 @@ public class RegisterStepDefs {
     public void iSeeAErrorMessageFor(String errorField) {
         assertThat(registerPage.getErrorMessageFor(errorField), equalTo(registerPage.getCorrectErrorMessageFor(errorField)));
     }
+
+    @When("I submit the registration form without salutation")
+    public void iFillOutTheRegistrationFormWithoutSalutation() {
+        registerPage.enterValidDataWitoutSalutation();
+        registerPage.submitRegistrationForm();
+    }
+
+    @When("I submit the registration form without terms and conditions")
+    public void iSubmitTheRegistrationFormWithoutTermsAndConditions() {
+        registerPage.clickTermsAndConditionsCheckbox();
+        registerPage.submitRegistrationForm();
+    }
+
+    @When("I open register form clause for {string}")
+    public void iOpenRegisterFormClauseFor(String clause) {
+        registerPage.openClause(clause);
+    }
+
+    @Then("I can read register form clause for {string}")
+    public void iCanReadRegisterFormClauseFor(String clause) {
+        assertThat(registerPage.getClauseTitle(clause), equalTo(registerPage.getCorrectClauseTitle(clause)));
+    }
+
+
 }
